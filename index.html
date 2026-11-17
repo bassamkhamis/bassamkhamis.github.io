@@ -160,6 +160,22 @@
         <div class="project-grid">
           <article class="project project-feature">
             <p class="mono project-index">01</p>
+            <h3>CPU ray tracer</h3>
+            <p>A CPU ray tracer that renders triangle meshes loaded from OBJ files in an SDL3 window. The CPU computes every pixel, with image rows split across cores; SDL3 only presents the finished frame. For each pixel the camera casts one primary ray, tests it against every triangle, and keeps the closest hit. The hit point and surface normal drive a simple diffuse shade — ambient plus a point-light term — while missed rays stay black. With one ray per pixel and no bounce or shadow rays, each pixel stays independent and easy to parallelize; GLM handles the math.</p>
+            <ul class="tags">
+              <li>C++</li>
+              <li>SDL3</li>
+              <li>GLM</li>
+              <li>Ray-tracing</li>
+              <li>Multithreading</li>
+            </ul>
+            <p class="project-links">
+              <a href="https://github.com/bassamkhamis/raytracer-cpu" target="_blank" rel="noopener noreferrer">Repository</a>
+            </p>
+          </article>
+
+          <article class="project">
+            <p class="mono project-index">02</p>
             <h3>Real-time Qt on Raspberry Pi 4</h3>
             <p>A QML and C++ application for embedded systems, packaged with BitBake and deployed through Yocto and meta-qt6. The Linux kernel was patched with PREEMPT_RT; rt-tests measured a maximum latency of 100 microseconds.</p>
             <ul class="tags">
@@ -175,7 +191,7 @@
           </article>
 
           <article class="project">
-            <p class="mono project-index">02</p>
+            <p class="mono project-index">03</p>
             <h3>Embedded Linux from scratch</h3>
             <p>A full embedded Linux system with Buildroot for cross-compilation: U-Boot, OpenSBI on RISC-V, a BusyBox root filesystem, a custom kernel, a virtual SD card, and QEMU for validation.</p>
             <ul class="tags">
@@ -190,7 +206,7 @@
           </article>
 
           <article class="project">
-            <p class="mono project-index">03</p>
+            <p class="mono project-index">04</p>
             <h3>Linux shell</h3>
             <p>A shell in C/C++ that parses commands with and without arguments, such as <code>ls -la</code>, and runs them as background processes through system calls and POSIX APIs.</p>
             <ul class="tags">
@@ -204,7 +220,7 @@
           </article>
 
           <article class="project">
-            <p class="mono project-index">04</p>
+            <p class="mono project-index">05</p>
             <h3>EDF scheduler</h3>
             <p>An earliest-deadline-first scheduler built on the structure of FreeRTOS, which uses fixed priorities. EDF assigns dynamic priority online.</p>
             <ul class="tags">
@@ -218,7 +234,7 @@
           </article>
 
           <article class="project">
-            <p class="mono project-index">05</p>
+            <p class="mono project-index">06</p>
             <h3>Bare-metal drivers</h3>
             <p>Low-level drivers written from scratch for the STM32F103C6 and ATmega32, as part of an embedded bare-metal course.</p>
             <ul class="tags">
