@@ -24,6 +24,54 @@
     });
   }
 
+  var copyButton = document.querySelector(".mail-copy");
+
+  if (copyButton) {
+    var originalLabel = copyButton.textContent;
+    var resetTimer;
+
+    function showCopyResult(ok) {
+      copyButton.textContent = ok ? "Copied!" : "Copy failed";
+      copyButton.classList.toggle("is-copied", ok);
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(function () {
+        copyButton.textContent = originalLabel;
+        copyButton.classList.remove("is-copied");
+      }, 1800);
+    }
+
+    function legacyCopy(text) {
+      var field = document.createElement("textarea");
+      field.value = text;
+      field.setAttribute("readonly", "");
+      field.style.position = "fixed";
+      field.style.opacity = "0";
+      document.body.appendChild(field);
+      field.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (error) {
+        ok = false;
+      }
+      document.body.removeChild(field);
+      return ok;
+    }
+
+    copyButton.addEventListener("click", function () {
+      var email = copyButton.getAttribute("data-copy-email");
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(function () {
+          showCopyResult(true);
+        }).catch(function () {
+          showCopyResult(legacyCopy(email));
+        });
+      } else {
+        showCopyResult(legacyCopy(email));
+      }
+    });
+  }
+
   if (!root.classList.contains("js") || !("IntersectionObserver" in window)) {
     return;
   }
